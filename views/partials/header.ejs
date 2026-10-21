@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SmartBus College Portal</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="<%= user ? '/dashboard' : '/' %>"><span class="logo">S</span><span>SmartBus<small>COLLEGE TRANSPORT PORTAL</small></span></a>
+  <% if (user) { %><div class="user"><%= user.name %> <span class="role"><%= user.role.charAt(0).toUpperCase() + user.role.slice(1) %></span> <a href="/logout">Log out</a></div><% } %>
+</header>
+<main class="container">
+<% if (notice) { %><div class="flash <%= notice.type %>"><%= notice.message %></div><% } %>

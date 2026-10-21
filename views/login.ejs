@@ -1,0 +1,16 @@
+<%- include("partials/header", { user, notice }) %>
+<section class="login-layout">
+  <div class="welcome"><div class="eyebrow">SMARTER CAMPUS COMMUTES</div><h1>Your journey.<br><span>Made simpler.</span></h1><p>One secure place for your college bus pass, payment records and route details.</p><div class="feature-list"><div>✓ Verified digital pass with QR code</div><div>✓ Boarding-point based fares and bus allocation</div><div>✓ Live bus location when your driver shares it</div></div><div class="route-art"><div class="sun"></div><div class="road"></div><div class="bus-art">SMARTBUS</div></div></div>
+  <div class="login-card">
+    <% if (mode === "signup") { %>
+      <div class="eyebrow">STUDENT REGISTRATION</div><h2>Create your account</h2><p class="muted">Student accounts can register here. Driver accounts are created only by the administrator.</p>
+      <form method="post" action="/signup"><label>Full name</label><input name="name" required minlength="2" placeholder="Your full name" autocomplete="name"><label>Username</label><input name="username" required minlength="3" maxlength="30" pattern="[A-Za-z0-9._-]+" placeholder="Choose a username" autocomplete="username"><label>Email (optional)</label><input name="email" type="email" placeholder="you@college.edu" autocomplete="email"><label>Password</label><input name="password" type="password" required minlength="8" placeholder="At least 8 characters" autocomplete="new-password"><button class="primary full">Create student account <span>→</span></button></form>
+      <p class="auth-switch">Already registered? <a href="/">Sign in</a></p>
+    <% } else { %>
+      <div class="eyebrow">WELCOME TO SMARTBUS</div><h2>Sign in to continue</h2><p class="muted">Access your role-specific transport workspace.</p>
+      <form method="post" action="/login"><label>Username</label><input name="username" required placeholder="Enter username" autocomplete="username"><label>Password</label><input name="password" type="password" required placeholder="Enter password" autocomplete="current-password"><button class="primary full">Sign in <span>→</span></button></form>
+      <p class="auth-switch">New student? <a href="/signup">Create a student account</a></p><div class="demo"><strong>Account access</strong><p>Students can sign up here.</p><p>Driver accounts are issued by the administrator.</p><p>Admin credentials are configured in your private <code>.env</code> file.</p></div>
+    <% } %>
+  </div>
+</section>
+<%- include("partials/footer") %>
